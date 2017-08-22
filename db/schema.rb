@@ -10,10 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170822192852) do
+ActiveRecord::Schema.define(version: 20170822201026) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "products_id", default: 0, null: false
+    t.index ["products_id"], name: "index_categories_on_products_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "categories_id", default: 0, null: false
+    t.index ["categories_id"], name: "index_products_on_categories_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -28,8 +45,13 @@ ActiveRecord::Schema.define(version: 20170822192852) do
     t.inet "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "products_id", default: 0, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["products_id"], name: "index_users_on_products_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "categories", "products", column: "products_id"
+  add_foreign_key "products", "categories", column: "categories_id"
+  add_foreign_key "users", "products", column: "products_id"
 end
