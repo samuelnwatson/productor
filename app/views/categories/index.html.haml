@@ -1,0 +1,7 @@
+#content
+  .left.column
+    %h4 categories
+    - @categories.each do |category|
+      %p=category.name
+      - category.products.each do |product|
+        %p=product.title
