@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :category do
     name "default"
-    # products
+    products
   end
 end
