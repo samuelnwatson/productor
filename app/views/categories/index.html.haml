@@ -6,3 +6,7 @@
       - category.products.each do |product|
         %p=product.title
         %p=product.description
+
+  .right.column
+    - if current_user
+      = link_to 'New product', new_product_path

@@ -1,8 +1,11 @@
 FactoryGirl.define do
   factory :product do
-    title "John"
-    description  "Doe"
-    categories
+    title Faker::StarTrek.character
+    description Faker::TwinPeaks.quote
     user
+
+    trait :categories do
+      categories
+    end
   end
 end
