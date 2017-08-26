@@ -16,7 +16,7 @@
             = link_to 'login or sign up', new_user_session_path
         - else
           %li
-            = "Hi #{current_user.name}"
+            = "Hi! #{current_user.name}"
           %li
-            = link_to 'log out', destroy_user_session_path, method: :delete
+            = link_to 'Logout', destroy_user_session_path, method: :delete
     = yield

@@ -5,9 +5,14 @@
   = devise_error_messages!
 
   .field
+    = f.label :name
+    %br
+    = f.text_field :name, autofocus: true
+
+  .field
     = f.label :email
     %br
-    = f.email_field :email, autofocus: true
+    = f.email_field :email
 
   .field
     = f.label :password
@@ -16,7 +21,7 @@
         (
         = @minimum_password_length
         characters minimum)
-        
+
     %br
     = f.password_field :password, autocomplete: "off"
 
