@@ -1,12 +1,12 @@
 %p
   title
   = @product.title
-%br
+
 %p
   Description
   = @product.description
 %br
-%span
+%aside
   created by
   = @product.user
   = time_ago_in_words(@product.created_at)
@@ -16,3 +16,7 @@
   Categories
   - @product.categories.each do |category|
     = category.name
+
+- if user_signed_in?
+  = link_to 'edit', edit_product_path(@product)
+  -# = link_to 'destroy', destroy_product_path(@product), method: :delete, data: { confirm: "delete product?" }

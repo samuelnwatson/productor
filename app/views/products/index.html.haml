@@ -4,7 +4,7 @@
     - @products.each do |product|
       %p
         Title
-        = product.title
+        = link_to "#{product.title}", product_path(product)
         Description
         = product.description
         %p Categories:
