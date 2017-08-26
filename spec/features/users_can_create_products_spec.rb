@@ -1,8 +1,9 @@
 require "rails_helper"
 
 RSpec.feature "users can create products" do
-  let!(:user)   { FactoryGirl.create(:user) }
-  let(:product) { FactoryGirl.build(:product) }
+  let!(:user)     { FactoryGirl.create(:user) }
+  let!(:category) { FactoryGirl.create(:category) }
+  let(:product)   { FactoryGirl.build(:product) }
 
   scenario "when signed in" do
     login_as(user)
@@ -11,11 +12,13 @@ RSpec.feature "users can create products" do
 
     fill_in "Title", with: product.title
     fill_in "Description", with: product.description
+    check "#{category.name}"
     click_on "Create product"
 
     expect(page).to have_content "product created"
     expect(page).to have_content "#{product.title}"
     expect(page).to have_content "#{product.description}"
+    expect(page).to have_content "#{category.name}"
   end
 
   scenario "when anonymous" do

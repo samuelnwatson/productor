@@ -8,5 +8,8 @@
         %p=product.description
 
   .right.column
+    %p
+      %p= link_to 'All products', products_path
     - if current_user
-      = link_to 'New product', new_product_path
+      %p= link_to 'New product', new_product_path
+      %p= link_to 'New category', new_category_path

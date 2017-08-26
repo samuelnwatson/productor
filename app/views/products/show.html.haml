@@ -1,5 +1,18 @@
-= @product.title
+%p
+  title
+  = @product.title
 %br
-= @product.description
+%p
+  Description
+  = @product.description
 %br
-= @product.user
+%span
+  created by
+  = @product.user
+  = time_ago_in_words(@product.created_at)
+  ago
+%br
+%p
+  Categories
+  - @product.categories.each do |category|
+    = category.name

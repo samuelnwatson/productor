@@ -2,6 +2,11 @@
   .left.column
     %h4 products
     - @products.each do |product|
-      %p= product.title
-      - product.categories.each do |category|
-        = category.name
+      %p
+        Title
+        = product.title
+        Description
+        = product.description
+        %p Categories:
+        - product.categories.each do |category|
+          %p= category.name
