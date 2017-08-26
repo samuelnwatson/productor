@@ -1,0 +1,8 @@
+%p
+  Name
+  = @category.name
+%br
+Products
+- @category.products.each do |product|
+  %p= link_to "#{product.title}", product_path(product)
+  %p=product.description

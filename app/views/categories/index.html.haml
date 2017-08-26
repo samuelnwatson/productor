@@ -4,7 +4,7 @@
     - @categories.each do |category|
       %p=category.name
       - category.products.each do |product|
-        %p=product.title
+        %p= link_to "#{product.title}", product_path(product)
         %p=product.description
 
   .right.column

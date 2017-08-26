@@ -14,7 +14,7 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    @category = Category.new(Category_params)
+    @category = Category.new(category_params)
 
     if @category.save
       flash[:notice] = "category created"
@@ -47,10 +47,10 @@ class CategoriesController < ApplicationController
   private
 
   def category_params
-    params.require(:category).permit(:name)
+    params.require(:category).permit(:name, product_ids: [])
   end
 
   def find_category
-    @category = category.find(params[:id])
+    @category = Category.find(params[:id])
   end
 end
