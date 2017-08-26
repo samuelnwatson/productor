@@ -1,9 +1,16 @@
 %p
-  title
+  %h3
+    title
   = @product.title
 
 %p
-  Description
+  = image_tag @product.photo.url
+  %br
+  = @product.photo_identifier
+
+%p
+  %h3
+    Description
   = @product.description
 %br
 %aside
@@ -13,7 +20,8 @@
   ago
 %br
 %p
-  Categories
+  %h3
+    Categories
   - @product.categories.each do |category|
     = category.name
 

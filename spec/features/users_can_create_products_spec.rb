@@ -13,12 +13,14 @@ RSpec.feature "users can create products" do
     fill_in "Title", with: product.title
     fill_in "Description", with: product.description
     check "#{category.name}"
+    attach_file "Photo", "spec/fixtures/photo.png"
     click_on "Create product"
 
     expect(page).to have_content "product created"
     expect(page).to have_content "#{product.title}"
     expect(page).to have_content "#{product.description}"
     expect(page).to have_content "#{category.name}"
+    expect(page).to have_content "photo.png"
   end
 
   scenario "when anonymous" do
