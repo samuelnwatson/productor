@@ -3,10 +3,11 @@
     title
   = @product.title
 
-%p
-  = image_tag @product.photo.url
-  %br
-  = @product.photo_identifier
+- unless @product.photo.file.nil?
+  %p
+    = image_tag @product.photo.url
+    %br
+    = @product.photo_identifier
 
 %p
   %h3
@@ -27,4 +28,4 @@
 
 - if user_signed_in?
   = link_to 'edit', edit_product_path(@product)
-  -# = link_to 'destroy', destroy_product_path(@product), method: :delete, data: { confirm: "delete product?" }
+  = link_to 'destroy', product_path(@product), method: :delete, data: { confirm: "delete product?" }

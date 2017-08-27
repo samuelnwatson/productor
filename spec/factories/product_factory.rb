@@ -2,7 +2,7 @@ FactoryGirl.define do
   factory :product do
     title Faker::StarTrek.character
     description Faker::TwinPeaks.quote
-    user
+    user Faker::StarWars.character
 
     trait :categories do
       categories
